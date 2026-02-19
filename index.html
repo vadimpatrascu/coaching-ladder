@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Premium Mentor Academy | Lansare Afacere Coaching Online</title>
+    <meta name="description" content="Descoperă pe ce treaptă a evoluției te afli în afacerea de coaching. Test de nivel gratuit și mentorat pentru coaching online.">
+    <meta name="keywords" content="coaching online, afacere coaching, mentorat, dezvoltare personală, scara evoluției">
+    <meta name="author" content="Premium Mentor Academy">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.vercel.app/">
+    <meta property="og:title" content="Premium Mentor Academy - Scara Evoluției în Coaching">
+    <meta property="og:description" content="Majoritatea oamenilor se opresc la 'Nu voi putea face asta'. Descoperă cum să urci până la 'Este atât de simplu!'">
+    <meta property="og:image" content="https://your-domain.vercel.app/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.vercel.app/">
+    <meta property="twitter:title" content="Premium Mentor Academy - Scara Evoluției">
+    <meta property="twitter:description" content="Test de nivel gratuit pentru afacerea ta de coaching online.">
+    <meta property="twitter:image" content="https://your-domain.vercel.app/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        ladder: {
+                            red: '#ef4444',
+                            orange: '#f97316',
+                            yellow: '#eab308',
+                            lightgreen: '#84cc16',
+                            green: '#22c55e',
+                            lightblue: '#38bdf8',
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { 
+            scroll-behavior: smooth; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, #ef4444 0%, #eab308 25%, #22c55e 50%, #3b82f6 75%, #a855f7 100%);
+            background-size: 200% auto;
+            animation: gradient 5s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .step-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: transparent;
+            transition: background 0.2s;
+        }
+        
+        .quiz-option:hover {
+            transform: translateX(8px);
+            border-color: #4f46e5;
+            background-color: #eef2ff;
+        }
+        
+        .quiz-option:hover::before {
+            background: #4f46e5;
+        }
+        
+        .quiz-option.selected {
+            background-color: #eef2ff;
+            border-color: #4f46e5;
+            color: #312e81;
+            transform: translateX(8px);
+        }
+        
+        .quiz-option.selected::before {
+            background: #4f46e5;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a855f7;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans leading-relaxed selection:bg-ladder-purple selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="glass-effect shadow-sm fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter flex items-center gap-2 group">
+                <span class="text-3xl group-hover:scale-110 transition-transform duration-300">🚀</span>
+                <span>Premium<span class="text-gradient font-extrabold">Mentor</span>Academy</span>
+            </a>
+            <a href="#inscriere" class="hidden md:inline-block bg-gradient-to-r from-ladder-blue to-ladder-purple hover:from-ladder-blue hover:to-purple-700 text-white font-semibold py-2.5 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Programează Apelul
+            </a>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-gray-100">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#quiz-section" class="block py-2 text-gray-700 hover:text-ladder-purple font-medium">Test de Nivel</a>
+                <a href="#scara-evolutiei" class="block py-2 text-gray-700 hover:text-ladder-purple font-medium">Scara Evoluției</a>
+                <a href="#inscriere" class="block py-2 px-4 bg-gradient-to-r from-ladder-blue to-ladder-purple text-white rounded-lg text-center font-semibold">Programează Apelul</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 md:pt-44 md:pb-24 overflow-hidden relative min-h-screen flex items-center">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-red-50 via-yellow-50 to-blue-50 opacity-70 -z-10"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-ladder-purple opacity-10 blur-[100px] rounded-full animate-float"></div>
+        <div class="absolute bottom-20 left-0 w-96 h-96 bg-ladder-yellow opacity-10 blur-[100px] rounded-full animate-float" style="animation-delay: 3s;"></div>
+        
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <!-- Text Content -->
+                <div class="md:w-1/2 fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-semibold mb-6 shadow-sm hover:shadow-md transition-shadow">
+                        Dezvoltare Personală & Profesională
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+                        Afacerea de Coaching nu este pentru oricine, dar <br>
+                        <span class="text-gradient">Tu pe ce treaptă ești?</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 border-l-4 border-ladder-purple pl-4 font-light">
+                        Majoritatea oamenilor se opresc la <span class="font-semibold text-ladder-orange">"Nu voi putea face asta"</span>. Descoperă cum să urci până la <span class="font-semibold text-ladder-purple">"Este atât de simplu!"</span>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#quiz-section" class="group px-8 py-4 bg-white text-gray-800 border-2 border-gray-200 font-bold rounded-xl hover:border-ladder-purple hover:text-ladder-purple transition-all shadow-sm hover:shadow-md text-center flex items-center justify-center gap-2">
+                            <span>Fă Testul de Nivel</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                        <a href="#inscriere" class="px-8 py-4 bg-gradient-to-r from-ladder-blue to-ladder-purple text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all transform text-center shadow-lg flex items-center justify-center gap-2">
+                            <span>Începe Ascensiunea</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Trust badges -->
+                    <div class="mt-10 flex items-center gap-4 text-sm text-gray-500">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-ladder-red border-2 border-white flex items-center justify-center text-white text-xs">VP</div>
+                            <div class="w-8 h-8 rounded-full bg-ladder-blue border-2 border-white flex items-center justify-center text-white text-xs">+50</div>
+                        </div>
+                        <p>Alături de 50+ mentori de succes</p>
+                    </div>
+                </div>
+                
+                <!-- Visual Content - SVG Ladder -->
+                <div class="md:w-1/2 w-full flex justify-center relative fade-in-up" style="animation-delay: 0.3s;">
+                    <!-- Glow Effects -->
+                    <div class="absolute top-10 right-10 w-64 h-64 bg-ladder-purple opacity-20 blur-3xl rounded-full animate-pulse-slow"></div>
+                    <div class="absolute bottom-10 left-10 w-64 h-64 bg-ladder-yellow opacity-20 blur-3xl rounded-full animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+                    
+                    <!-- Ladder SVG Visualization -->
+                    <div class="relative z-10 w-full max-w-md transform hover:scale-105 transition duration-700">
+                        <svg viewBox="0 0 400 600" class="w-full h-auto drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Definitions for gradients -->
+                            <defs>
+                                <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradYellow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#eab308;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ca8a04;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.2"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Ladder Structure -->
+                            <rect x="180" y="50" width="10" height="500" fill="#334155" rx="5" opacity="0.3"/>
+                            <rect x="210" y="50" width="10" height="500" fill="#334155" rx="5" opacity="0.3"/>
+                            
+                            <!-- Steps -->
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.1s;">
+                                <rect x="160" y="480" width="80" height="50" fill="url(#gradRed)" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="510" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Nu voi face</text>
+                            </g>
+                            
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.2s;">
+                                <rect x="160" y="400" width="80" height="50" fill="url(#gradOrange)" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="430" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Nu pot</text>
+                            </g>
+                            
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.3s;">
+                                <rect x="160" y="320" width="80" height="50" fill="url(#gradYellow)" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="350" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Vreau</text>
+                            </g>
+                            
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.4s;">
+                                <rect x="160" y="240" width="80" height="50" fill="#84cc16" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="270" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Cum pot?</text>
+                            </g>
+                            
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.5s;">
+                                <rect x="160" y="160" width="80" height="50" fill="url(#gradGreen)" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="190" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Voi încerca</text>
+                            </g>
+                            
+                            <g class="step" style="animation: slideUp 0.5s ease-out forwards; opacity: 0; animation-delay: 0.6s;">
+                                <rect x="160" y="80" width="80" height="50" fill="#38bdf8" rx="8" filter="url(#shadow)"/>
+                                <text x="200" y="110" text-anchor="middle" fill="white" font-size="12" font-weight="bold">O pot face!</text>
+                            </g>
+                            
+                            <!-- Character on top -->
+                            <circle cx="200" cy="50" r="15" fill="#a855f7" filter="url(#shadow)">
+                                <animate attributeName="cy" values="50;45;50" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="200" y="30" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Este simplu!</text>
+                        </svg>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden md:block animate-bounce">
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">⬆️</span>
+                                <span class="text-lg font-bold text-ladder-purple">Level Up!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Potential Section -->
+    <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-ladder-purple opacity-20 blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-ladder-blue opacity-20 blur-[100px]"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h3 class="text-3xl md:text-5xl font-bold mb-8">Potențial Neexploatat</h3>
+            <div class="inline-block p-1 rounded-2xl bg-gradient-to-r from-ladder-red via-ladder-yellow to-ladder-purple mb-8">
+                <div class="bg-gray-900 rounded-xl px-8 py-6">
+                    <p class="text-lg md:text-3xl font-light">
+                        "Doar <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 font-bold text-4xl md:text-6xl mx-2">1%</span> din Potențialul acestei ramuri se realizează în România."
+                    </p>
+                </div>
+            </div>
+            <p class="text-gray-300 mb-10 text-lg max-w-2xl mx-auto leading-relaxed">
+                Testul de mai jos te va ajuta să înțelegi dacă faci parte din acest 1% sau ce te reține să ajungi acolo.
+            </p>
+            <div class="flex justify-center gap-4 text-sm text-gray-400">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 bg-ladder-green rounded-full"></span> 8 Întrebări</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 bg-ladder-blue rounded-full"></span> Rezultat Instant</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 bg-ladder-purple rounded-full"></span> Gratuit</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" class="py-24 bg-gradient-to-b from-gray-50 to-white relative">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <span class="text-ladder-purple font-bold tracking-widest text-sm uppercase bg-purple-50 px-4 py-1 rounded-full">Autoevaluare</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4">Pe ce treaptă a evoluției te afli?</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Răspunde sincer la cele 8 întrebări pentru a identifica blocajele și oportunitățile tale. Nu există răspunsuri greșite, doar niveluri de conștientizare.</p>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden" id="quiz-container">
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-100 h-2 relative overflow-hidden">
+                    <div class="bg-gradient-to-r from-ladder-red via-ladder-yellow to-ladder-purple h-full transition-all duration-500 ease-out relative" style="width: 0%" id="progress-bar">
+                        <div class="absolute right-0 top-0 h-full w-4 bg-white opacity-50 animate-pulse"></div>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-12">
+                    <!-- Question Area -->
+                    <div id="question-area">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Întrebarea <span id="q-current">1</span>/<span id="q-total">8</span></span>
+                            <span class="text-xs text-gray-400">Selectează un răspuns</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-8 leading-snug min-h-[4rem]" id="question-text">Se încarcă întrebarea...</h3>
+                        <div class="space-y-3" id="answers-container" role="radiogroup" aria-label="Opțiuni de răspuns">
+                            <!-- Answers injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Result Area (Hidden initially) -->
+                    <div id="result-area" class="hidden text-center">
+                        <div class="mb-8">
+                            <div class="inline-block p-4 rounded-full bg-gray-50 mb-4">
+                                <span class="text-4xl" id="result-icon">🏆</span>
+                            </div>
+                            <span class="text-gray-500 text-lg block mb-2">Te afli pe treapta:</span>
+                            <h2 class="text-4xl md:text-5xl font-extrabold mt-2 mb-4 transition-all duration-500" id="result-title">TITLU REZULTAT</h2>
+                            <div class="w-24 h-1 bg-gradient-to-r from-ladder-red to-ladder-purple mx-auto rounded-full mb-6"></div>
+                            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8" id="result-desc">Descrierea rezultatului va apărea aici.</p>
+                            
+                            <div class="p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 mb-8 text-left max-w-2xl mx-auto shadow-inner">
+                                <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-ladder-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    Recomandarea noastră:
+                                </h4>
+                                <p id="result-advice" class="text-gray-700 leading-relaxed">Sfat personalizat...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <a href="https://calendly.com/vadimpatrascu/discoverycall" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto bg-gradient-to-r from-ladder-blue to-ladder-purple hover:from-blue-600 hover:to-purple-800 text-white font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl text-lg animate-pulse-slow">
+                                🚀 Treci la nivelul următor (Apel Gratuit)
+                            </a>
+                            <div>
+                                <button onclick="resetQuiz()" class="mt-4 text-gray-500 hover:text-gray-800 underline underline-offset-4 transition-colors px-4 py-2">
+                                    ↻ Refă testul
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evolution Steps Grid -->
+    <section id="scara-evolutiei" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Cele 8 Trepte ale Evoluției</h2>
+                <p class="text-gray-600 text-lg">Fiecare treaptă reprezintă un nivel distinct de conștientizare și acțiune. Pe care te recunoști?</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-red shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🔴</span>
+                        <span class="text-xs font-bold text-gray-400">01</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-red text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Nu voi face asta</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Rezistență totală, negație. Teama paralizează complet orice intenție de acțiune.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-orange shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🟠</span>
+                        <span class="text-xs font-bold text-gray-400">02</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-orange text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Nu voi putea</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Lipsă de încredere în sine. Sindromul impostorului. Comparare cu alții.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-yellow shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🟡</span>
+                        <span class="text-xs font-bold text-gray-400">03</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-yellow text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Vreau să fac</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Intenție pozitivă dar lipsă de direcție. Visare fără plan concret.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-lightgreen shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🫒</span>
+                        <span class="text-xs font-bold text-gray-400">04</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-lightgreen text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Cum pot?</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Deschidere către soluții. Căutare activă de informații și strategii.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-green shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🟢</span>
+                        <span class="text-xs font-bold text-gray-400">05</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-green text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Voi încerca</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Primii pași concreți. Testare și experimentare. Acceptarea erorilor.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-lightblue shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🔵</span>
+                        <span class="text-xs font-bold text-gray-400">06</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-lightblue text-lg mb-2 group-hover:scale-105 transition-transform origin-left">O pot face!</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Încredere consolidată. Rezultate vizibile. Competențe demonstrate.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-blue shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🔷</span>
+                        <span class="text-xs font-bold text-gray-400">07</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-blue text-lg mb-2 group-hover:scale-105 transition-transform origin-left">O să o fac eu!</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Asumare totală. Responsabilitate 100%. Acțiune consistentă zilnică.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-ladder-purple shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group ring-2 ring-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-3xl">🟣</span>
+                        <span class="text-xs font-bold text-gray-400 bg-ladder-purple text-white px-2 py-0.5 rounded">TOP</span>
+                    </div>
+                    <h4 class="font-bold text-ladder-purple text-lg mb-2 group-hover:scale-105 transition-transform origin-left">Este simplu!</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Flow și măiestrie. Executare impecabilă. Mentor pentru alții.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-500 text-sm bg-white inline-block px-6 py-2 rounded-full shadow-sm border border-gray-100">
+                    Lista completă cu cele 25 de puncte detaliate este inclusă în programul de mentorat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualification Section -->
+    <section id="inscriere" class="py-24 bg-white relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50 opacity-50"></div>
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ești pregătit să urci?</h2>
+                <p class="text-gray-600 mt-4 text-lg">Analizează cu onestitate criteriile de calificare. Nu acceptăm pe toată lumea.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Yes Column -->
+                <div class="bg-gradient-to-b from-green-50 to-white p-8 md:p-10 rounded-3xl shadow-xl border-2 border-green-100 relative overflow-hidden group hover:border-green-300 transition-all duration-300">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-ladder-green"></div>
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-green-100 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                    
+                    <div class="flex items-center mb-8 relative">
+                        <div class="bg-green-100 p-4 rounded-2xl mr-4 group-hover:bg-green-200 transition-colors shadow-sm">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">ÎNSCRIE-TE DACĂ:</h3>
+                    </div>
+                    <ul class="space-y-6 text-gray-700 relative">
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-green-500 text-white rounded-full text-xs shrink-0 mt-0.5 shadow-sm">✓</span>
+                            <span class="text-lg leading-relaxed">Ești <strong>super hotărât/ă</strong> să faci tranziția de la consumator pasiv la <span class="text-green-700 font-semibold">Prestator Activ de Servicii Digitale</span>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-green-500 text-white rounded-full text-xs shrink-0 mt-0.5 shadow-sm">✓</span>
+                            <span class="text-lg leading-relaxed">Vrei să oferi servicii cu impact real: coaching, cursuri online, mentorat sau training.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-green-500 text-white rounded-full text-xs shrink-0 mt-0.5 shadow-sm">✓</span>
+                            <span class="text-lg leading-relaxed">Ești dispus să investești timp și resurse în dezvoltarea ta profesională.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- No Column -->
+                <div class="bg-gray-50 p-8 md:p-10 rounded-3xl shadow-lg border border-gray-200 relative overflow-hidden opacity-90 hover:opacity-100 transition-all duration-300">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-ladder-red"></div>
+                    
+                    <div class="flex items-center mb-8">
+                        <div class="bg-red-50 p-4 rounded-2xl mr-4 shadow-sm">
+                            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">NU TE ÎNSCRIE DACĂ:</h3>
+                    </div>
+                    <ul class="space-y-6 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-red-100 text-red-500 rounded-full text-xs shrink-0 mt-0.5">✕</span>
+                            <span class="text-lg leading-relaxed">Crezi că piața online de coaching este deja <span class="line-through">suprasaturată</span>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-red-100 text-red-500 rounded-full text-xs shrink-0 mt-0.5">✕</span>
+                            <span class="text-lg leading-relaxed">Consideri imposibil să câștigi între <strong>2000€-5000€/lunar</strong> în România din coaching.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-6 h-6 mr-3 bg-red-100 text-red-500 rounded-full text-xs shrink-0 mt-0.5">✕</span>
+                            <span class="text-lg leading-relaxed">Cauți "get rich quick" schemes fără muncă reală.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- CTA Area -->
+            <div class="mt-20 text-center">
+                <div class="inline-block p-1.5 rounded-2xl bg-gradient-to-r from-ladder-blue via-ladder-purple to-pink-500 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <a href="https://calendly.com/vadimpatrascu/discoverycall" target="_blank" rel="noopener noreferrer" class="block bg-white hover:bg-gray-50 text-gray-900 text-xl font-bold py-6 px-12 rounded-xl transition duration-300 flex items-center gap-3">
+                        <span>🗓️ Programează Apelul Gratuit</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+                <p class="mt-6 text-gray-500 flex items-center justify-center gap-2">
+                    <span class="inline-block w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    Locuri limitate pentru cohorta 2026
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <span class="text-2xl font-bold text-white tracking-tighter flex items-center gap-2 justify-center md:justify-start">
+                        <span>🚀</span>
+                        <span>Premium<span class="text-ladder-blue">Mentor</span>Academy</span>
+                    </span>
+                    <p class="mt-2 text-sm text-gray-500">Transformă-ți pasiunea în profesie profitabilă.</p>
+                </div>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">Confidențialitate</a>
+                    <a href="#" class="hover:text-white transition-colors">Termeni</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2026 Premium Mentor Academy. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Logic -->
+    <script>
+        // Quiz Data
+        const questions = [
+            {
+                text: "Când te gândești să începi (sau să scalezi) o afacere de coaching, care este primul gând care îți vine în minte?",
+                answers: [
+                    { text: "Nu cred că e pentru mine, e prea complicat.", score: 1 },
+                    { text: "Mi-ar plăcea, dar nu cred că am suficiente cunoștințe.", score: 2 },
+                    { text: "Vreau să fac asta, simt că am ceva de oferit.", score: 3 },
+                    { text: "Știu că pot, doar caut strategia potrivită.", score: 5 }
+                ]
+            },
+            {
+                text: "Care este relația ta actuală cu expunerea publică (social media, video)?",
+                answers: [
+                    { text: "Refuz categoric să apar video.", score: 1 },
+                    { text: "Mi-e frică de ce vor zice alții, așa că evit.", score: 2 },
+                    { text: "Mă simt inconfortabil, dar înțeleg că e necesar.", score: 4 },
+                    { text: "Postez cu încredere și autenticitate.", score: 6 }
+                ]
+            },
+            {
+                text: "Cum reacționezi când întâmpini o problemă tehnică (ex: creare site, setare reclame)?",
+                answers: [
+                    { text: "Renunț. Nu mă pricep la tehnologie.", score: 1 },
+                    { text: "Mă blochez și procrastinez.", score: 2 },
+                    { text: "Caut pe Google 'cum pot face asta'.", score: 4 },
+                    { text: "Rezolv singur sau deleg imediat. E simplu.", score: 6 }
+                ]
+            },
+            {
+                text: "Cât de des acționezi concret pentru visul tău?",
+                answers: [
+                    { text: "Deloc. Doar visez.", score: 1 },
+                    { text: "Rar, când am timp și chef.", score: 3 },
+                    { text: "Încerc săptămânal, dar nu sunt constant.", score: 5 },
+                    { text: "Zilnic. Am o disciplină clară.", score: 7 }
+                ]
+            },
+            {
+                text: "Ce părere ai despre vânzări și a cere bani pe serviciile tale?",
+                answers: [
+                    { text: "Nu pot cere bani, mi-e rușine.", score: 2 },
+                    { text: "Vreau să vând, dar nu știu cum să nu par 'disperat'.", score: 3 },
+                    { text: "Am un preț, dar îl negociez des în jos.", score: 5 },
+                    { text: "Știu valoarea mea și o comunic cu încredere.", score: 7 }
+                ]
+            },
+            {
+                text: "Când vezi alți coachi de succes, ce simți?",
+                answers: [
+                    { text: "Invidie. Sigur au avut noroc.", score: 1 },
+                    { text: "Descurajare. Piața e deja plină.", score: 2 },
+                    { text: "Curiozitate. Ce fac ei și pot face și eu?", score: 4 },
+                    { text: "Inspirație. Dacă ei au putut, și eu pot!", score: 6 }
+                ]
+            },
+            {
+                text: "Dacă ai avea strategia completă mâine, ce ai face?",
+                answers: [
+                    { text: "Aș găsi probabil alte motive să amân.", score: 1 },
+                    { text: "Aș încerca, dar cu frică de eșec.", score: 3 },
+                    { text: "Aș pune-o în aplicare imediat.", score: 6 },
+                    { text: "Aș adapta-o stilului meu și aș scala rapid.", score: 8 }
+                ]
+            },
+            {
+                text: "Cum definești eșecul?",
+                answers: [
+                    { text: "Dovada că nu sunt bun de nimic.", score: 1 },
+                    { text: "Un motiv să mă opresc.", score: 2 },
+                    { text: "O lecție din care învăț cum să fac mai bine.", score: 5 },
+                    { text: "Parte naturală din procesul spre succes.", score: 7 }
+                ]
+            }
+        ];
+
+        // State
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+        let isAnswering = false;
+
+        // DOM Elements
+        const questionText = document.getElementById('question-text');
+        const answersContainer = document.getElementById('answers-container');
+        const progressBar = document.getElementById('progress-bar');
+        const questionArea = document.getElementById('question-area');
+        const resultArea = document.getElementById('result-area');
+        const qCurrent = document.getElementById('q-current');
+        const qTotal = document.getElementById('q-total');
+
+        // Initialize
+        qTotal.textContent = questions.length;
+
+        // Result Logic
+        function getResult(score) {
+            const maxScore = 52; // Approximate max
+            
+            if (score <= 12) return {
+                title: "Nu voi face asta",
+                color: "text-ladder-red",
+                bgColor: "bg-red-50",
+                icon: "🛑",
+                desc: "Te afli într-o zonă de negare sau rezistență majoră. Frica îți dictează deciziile în acest moment.",
+                advice: "Ai nevoie urgentă de o schimbare de mindset. Dacă nu acționezi, vei rămâne în același punct și peste 5 ani. Primul pas este să recunoști blocajul."
+            };
+            if (score <= 20) return {
+                title: "Nu voi putea face asta",
+                color: "text-ladder-orange",
+                bgColor: "bg-orange-50",
+                icon: "😰",
+                desc: "Te îndoiești de capacitățile tale. Crezi că alții pot, dar tu nu ai 'ce trebuie'.",
+                advice: "Acesta este sindromul impostorului. Ai nevoie de un mentor care să îți arate că și tu ai resursele necesare - doar trebuie să le accesezi."
+            };
+            if (score <= 28) return {
+                title: "Vreau să fac asta",
+                color: "text-ladder-yellow",
+                bgColor: "bg-yellow-50",
+                icon: "💭",
+                desc: "Dorința există, intenția este setată, dar lipsește planul concret. Ești în zona 'visătorului'.",
+                advice: "Ești în punctul critic. Transformă 'vreau' în acțiune. Ai nevoie de claritate și structură, nu de mai multă motivație."
+            };
+            if (score <= 35) return {
+                title: "Cum pot face asta?",
+                color: "text-ladder-lightgreen",
+                bgColor: "bg-lime-50",
+                icon: "🔍",
+                desc: "Ai trecut la faza de curiozitate și căutare de soluții. Ești pregătit să înveți și să aplici.",
+                advice: "Este momentul perfect pentru a accesa o strategie validată. Nu mai încerca să reinventezi roata - învață de la cei care au reușit deja."
+            };
+            if (score <= 42) return {
+                title: "Voi încerca...",
+                color: "text-ladder-green",
+                bgColor: "bg-green-50",
+                icon: "🎯",
+                desc: "Ai început să faci pași timizi. Ești dispus să testezi apele și să ieși din zona de confort.",
+                advice: "'A încerca' lasă loc de eșec. Asumă-ți angajamentul total. Ai nevoie de curaj pentru a accelera și a trece la nivelul următor."
+            };
+            if (score <= 46) return {
+                title: "O pot face!",
+                color: "text-ladder-lightblue",
+                bgColor: "bg-sky-50",
+                icon: "💪",
+                desc: "Încrederea ta a crescut considerabil. Începi să vezi posibilitățile reale și să crezi în tine.",
+                advice: "Ești gata de lansare. Ai nevoie doar de un mic impuls pentru a transforma potențialul în profit. Acționează acum!"
+            };
+            if (score <= 50) return {
+                title: "O să o fac eu!",
+                color: "text-ladder-blue",
+                bgColor: "bg-blue-50",
+                icon: "🚀",
+                desc: "Ți-ai asumat responsabilitatea totală. Ești determinat, disciplinat și gata de muncă serioasă.",
+                advice: "Felicitări! Ești profilul ideal pentru succes. Acum ai nevoie de scalare și optimizare. Să trecem la treabă!"
+            };
+            return {
+                title: "Este atât de simplu!",
+                color: "text-ladder-purple",
+                bgColor: "bg-purple-50",
+                icon: "👑",
+                desc: "Ai atins starea de flow și măiestrie. Vezi clar drumul și obstacolele par mici sau inexistente.",
+                advice: "Ești în acel 1%. E momentul să îți scalezi imperiul sau să devii mentor pentru alții. Impactul tău poate fi uriaș!"
+            };
+        }
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionText.innerHTML = currentQuestion.text;
+            answersContainer.innerHTML = '';
+            
+            // Update counters
+            qCurrent.textContent = currentQuestionIndex + 1;
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Create answer buttons
+            currentQuestion.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'quiz-option w-full text-left p-5 rounded-xl border-2 border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-medium shadow-sm';
+                button.setAttribute('role', 'radio');
+                button.setAttribute('aria-label', answer.text);
+                button.innerHTML = `
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-sm font-bold shrink-0">${String.fromCharCode(65 + index)}</span>
+                        <span>${answer.text}</span>
+                    </span>
+                `;
+                button.onclick = () => selectAnswer(answer.score, button);
+                answersContainer.appendChild(button);
+            });
+            
+            isAnswering = false;
+        }
+
+        function selectAnswer(score, selectedButton) {
+            if (isAnswering) return;
+            isAnswering = true;
+            
+            // Visual feedback
+            const allButtons = answersContainer.querySelectorAll('button');
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+            });
+            selectedButton.classList.remove('opacity-50');
+            selectedButton.classList.add('selected', 'ring-2', 'ring-ladder-purple');
+            
+            // Add score and wait for animation
+            totalScore += score;
+            
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 600);
+        }
+
+        function showResults() {
+            progressBar.style.width = '100%';
+            questionArea.classList.add('hidden');
+            resultArea.classList.remove('hidden');
+            
+            // Scroll to result
+            resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            const result = getResult(totalScore);
+            
+            // Animate results
+            const resultTitle = document.getElementById('result-title');
+            const resultDesc = document.getElementById('result-desc');
+            const resultAdvice = document.getElementById('result-advice');
+            const resultIcon = document.getElementById('result-icon');
+
+            resultIcon.textContent = result.icon;
+            resultTitle.innerHTML = `"${result.title}"`;
+            resultTitle.className = `text-4xl md:text-5xl font-extrabold mt-2 mb-4 ${result.color}`;
+            
+            resultDesc.innerHTML = result.desc;
+            resultAdvice.innerHTML = result.advice;
+            
+            // Add confetti effect for high scores
+            if (totalScore > 40) {
+                createConfetti();
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            totalScore = 0;
+            questionArea.classList.remove('hidden');
+            resultArea.classList.add('hidden');
+            loadQuestion();
+            // Scroll back to quiz top
+            document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Confetti effect for high achievers
+        function createConfetti() {
+            const colors = ['#ef4444', '#eab308', '#22c55e', '#3b82f6', '#a855f7'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.pointerEvents = 'none';
+                    document.body.appendChild(confetti);
+                    
+                    const duration = Math.random() * 3 + 2;
+                    confetti.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                        { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: duration * 1000,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    }).onfinish = () => confetti.remove();
+                }, i * 50);
+            }
+        }
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Initialize
+        loadQuestion();
+    </script>
+</body>
+</html>
